@@ -1,11 +1,17 @@
 <template>
-  <div class="w-26 h-26 bg-blue-200 rounded-lg shadow-lg m-2 dark:bg-gray-800">
+  <div
+    v-on:click="select()"
+    class="w-26 h-26 bg-blue-200 rounded-lg shadow-lg m-2 dark:bg-gray-800"
+    :class="[isSelected ? selectionTransform : '']"
+  >
     <div class="grid grid-cols-3">
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-green-500"></button>
+      <button class="w-7 h-7 m-1 rounded-full bg-green-500 text-xs">
+        {{ name }}
+      </button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
@@ -13,3 +19,24 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        name: "empty",
+        isSelected: false,
+        selectionTransform: `transform
+          -translate-y-2
+          translate-x-1
+          `,
+      };
+    },
+    methods: {
+      select() {
+        this.isSelected = true;
+        console.log(this._uid, " selected");
+      },
+    },
+  };
+</script>
