@@ -2,7 +2,7 @@
   <div
     v-on:click="select()"
     class="w-26 h-26 bg-blue-200 rounded-lg shadow-lg m-2 dark:bg-gray-800"
-    :class="[isSelected ? selectionTransform : unselectionTransform]"
+    :class="[isSelected ? selectionTransform : '']"
   >
     <div class="grid grid-cols-3">
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
@@ -30,10 +30,6 @@
         selectionTransform: `transform
           -translate-y-2
           translate-x-1
-          `,
-        unselectionTransform: `transform
-          translate-y-2
-          -translate-x-1
           `,
       };
     },

@@ -1,5 +1,5 @@
 <template>
-  <div @cardSelected="setSelectedCarduid">
+  <div v-on:cardSelected="setSelectedCarduid">
     <h1>Main grid</h1>
     <div class="grid justify-items-center">
       <div class="grid grid-cols-3 w-max">
