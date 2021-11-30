@@ -35,12 +35,14 @@
     },
     methods: {
       select() {
+        console.log(this.$store.state.selectedCard);
         if (this.isSelected === true) {
           this.isSelected = false;
+          this.$store.commit("setSelectedCard", "empty");
         } else {
           this.isSelected = true;
-          this.$emit("cardSelected", "appear here ?");
-          console.log(this._uid, " selected");
+          this.$store.commit("setSelectedCard", this.id);
+          console.log(this.id, " selected");
         }
       },
     },
