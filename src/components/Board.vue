@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @cardSelected="setSelectedCarduid">
     <h1>Main grid</h1>
     <div class="grid justify-items-center">
       <div class="grid grid-cols-3 w-max">
@@ -31,7 +31,15 @@
       return {
         grid: grid,
         p1Hand: p1Hand,
+        selectedCarduid: null,
       };
+    },
+
+    methods: {
+      setSelectedCarduid(id) {
+        this.selectedCarduid = id;
+        console.log(id);
+      },
     },
 
     components: {

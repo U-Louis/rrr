@@ -2,7 +2,7 @@
   <div
     v-on:click="select()"
     class="w-26 h-26 bg-blue-200 rounded-lg shadow-lg m-2 dark:bg-gray-800"
-    :class="[isSelected ? selectionTransform : '']"
+    :class="[isSelected ? selectionTransform : unselectionTransform]"
   >
     <div class="grid grid-cols-3">
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
@@ -25,17 +25,27 @@
     data() {
       return {
         name: "empty",
+        id: this._uid,
         isSelected: false,
         selectionTransform: `transform
           -translate-y-2
           translate-x-1
           `,
+        unselectionTransform: `transform
+          translate-y-2
+          -translate-x-1
+          `,
       };
     },
     methods: {
       select() {
-        this.isSelected = true;
-        console.log(this._uid, " selected");
+        if (this.isSelected === true) {
+          this.isSelected = false;
+        } else {
+          this.isSelected = true;
+          this.$emit("cardSelected", "appear here ?");
+          console.log(this._uid, " selected");
+        }
       },
     },
   };
