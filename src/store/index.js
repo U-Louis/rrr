@@ -5,6 +5,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         selectedCard: "empty",
+        gridDeck: [],
+        handDeck: [],
     },
     getters: {},
     mutations: {
