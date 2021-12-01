@@ -13,7 +13,10 @@ export const store = new Vuex.Store({
         setSelectedCard(state, selection) {
             state.selectedCard = selection;
         },
+        throwNewGame(state) {
+            console.log("works");
+            state.gridDeck = [0, 1, 2];
+            console.log(state.gridDeck);
+        },
     },
-    actions: {},
-    modules: {},
 });

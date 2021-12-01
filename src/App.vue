@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <Menu></Menu>
     <Board></Board>
   </div>
 </template>
 
 <script>
   import Board from "./components/Board.vue";
+  import Menu from "./components/Menu.vue";
 
   export default {
     name: "App",
     components: {
+      Menu,
       Board,
     },
   };

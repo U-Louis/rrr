@@ -10,7 +10,7 @@
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-green-500 text-xs">
-        {{ name }}
+        {{ cardId }}
       </button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
       <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
@@ -22,10 +22,12 @@
 
 <script>
   export default {
+    props: ["cardId"],
     data() {
       return {
         name: "empty",
-        id: this._uid,
+        team: "blue",
+        state: "normal",
         isSelected: false,
         selectionTransform: `transform
           -translate-y-2
@@ -33,13 +35,14 @@
           `,
       };
     },
+
     methods: {
       select() {
         if (this.isSelected === true) {
           this.isSelected = false;
           this.computeSelect;
         } else {
-          console.log(this.id, " selected");
+          console.log(this.cardId, " selected");
           this.isSelected = true;
           this.computeSelect;
         }
