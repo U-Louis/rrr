@@ -4,23 +4,13 @@
     class="w-26 h-26 bg-blue-200 rounded-lg shadow-lg m-2 dark:bg-gray-800"
     :class="[isSelected ? selectionTransform : '']"
   >
-    <div class="grid grid-cols-3">
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-green-500 text-xs">
-        {{ cardId }}
-      </button>
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-      <button class="w-7 h-7 m-1 rounded-full bg-blue-500"></button>
-    </div>
+    <king></king>
+    {{ cardId }}
   </div>
 </template>
 
 <script>
+  import King from "./cardCompositions/King.vue";
   export default {
     props: ["cardId"],
     data() {
@@ -56,6 +46,9 @@
           return this.$store.commit("setSelectedCard", this.id);
         }
       },
+    },
+    components: {
+      King,
     },
   };
 </script>
