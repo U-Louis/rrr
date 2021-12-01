@@ -1,14 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
     state: {
         selectedCard: "empty",
     },
     getters: {},
-    Mutation: {
+    mutations: {
         setSelectedCard(state, selection) {
             state.selectedCard = selection;
         },

@@ -5,13 +5,11 @@
 </template>
 
 <script>
-  //import Card from "./components/Card.vue";
   import Board from "./components/Board.vue";
 
   export default {
     name: "App",
     components: {
-      //Card,
       Board,
     },
   };

@@ -35,14 +35,22 @@
     },
     methods: {
       select() {
-        console.log(this.$store.state.selectedCard);
         if (this.isSelected === true) {
           this.isSelected = false;
-          this.$store.commit("setSelectedCard", "empty");
+          this.computeSelect;
         } else {
-          this.isSelected = true;
-          this.$store.commit("setSelectedCard", this.id);
           console.log(this.id, " selected");
+          this.isSelected = true;
+          this.computeSelect;
+        }
+      },
+    },
+    computed: {
+      computeSelect() {
+        if (this.isSelected === true) {
+          return this.$store.commit("setSelectedCard", "empty");
+        } else {
+          return this.$store.commit("setSelectedCard", this.id);
         }
       },
     },
