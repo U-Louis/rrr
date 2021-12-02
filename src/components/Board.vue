@@ -49,7 +49,7 @@
         if (i < 9) {
           this.grid[i] = cardIdReceived;
         } else if (i < 16) {
-          this.p1Hand[i - 9] = cardIdReceived;
+          this.p1Hand[i - 9] = cardIdReceived; //for p2, use -16 and so on
         }
         this.fillDecksCounter++;
         console.log(this.grid, this.p1Hand);
