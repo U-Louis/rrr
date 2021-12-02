@@ -35,10 +35,13 @@
     data() {
       return {
         isSelected: false,
-        selectionTransform: `transform
-          -translate-y-2
-          translate-x-1
+        selectionTransform: `
+        animate-pulse
           `,
+        hoverTransform: `
+        transform
+          -translate-y-2
+          translate-x-1`,
       };
     },
 

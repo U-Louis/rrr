@@ -48,29 +48,18 @@
 
     methods: {
       selectCard(clickedCard) {
-        //deselect current card
+        //unshow currently selected card
         if (this.selectedCard != null) {
           this.selectedCard._data.isSelected = false;
         }
 
-        //raise clicked card OR unraise if clicked and selected are the same
+        //show clicked card OR unshow if clicked and selected are the same
         if (this.selectedCard != clickedCard) {
           clickedCard._data.isSelected = !clickedCard._data.isSelected;
+          this.selectedCard = null;
         }
-
         //set the new selected card
         this.selectedCard = clickedCard;
-      },
-
-      fillDecks(cardIdReceived) {
-        let i = this.fillDecksCounter;
-        if (i < 9) {
-          this.grid[i] = cardIdReceived;
-        } else if (i < 16) {
-          this.p1Hand[i - 9] = cardIdReceived; //for p2, use -16 and so on
-        }
-        this.fillDecksCounter++;
-        //console.log(this.grid, this.p1Hand);
       },
     },
 
