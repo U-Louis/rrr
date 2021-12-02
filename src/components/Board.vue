@@ -5,7 +5,6 @@
       <div class="grid grid-cols-3 w-max">
         <div v-for="item in grid" :key="item.id">
           <card
-            v-on:emitCardId="fillDecks"
             name="empty"
             definition="empty"
             state="none"
@@ -20,7 +19,6 @@
       <div class="grid grid-cols-7">
         <div v-for="item in p1Hand" :key="item.id">
           <card
-            v-on:emitCardId="fillDecks"
             v-on:cardClicked="selectCard"
             name="empty"
             definition="king"
