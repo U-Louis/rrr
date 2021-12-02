@@ -1,17 +1,20 @@
 <template>
   <div
-    v-on:click="select()"
+    v-on:click="cardClicked"
     class="w-26 h-26 bg-blue-200 rounded-lg shadow-lg m-2 dark:bg-gray-800"
     :class="[isSelected ? selectionTransform : '']"
   >
-    <king></king>
-    {{ cardId }}
+    <king :cardId="cardId"></king>
   </div>
 </template>
 
 <script>
   import King from "./cardCompositions/King.vue";
   export default {
+    created() {
+      this.$emit("emitCardId", this._uid);
+      console.log(this._uid, " emitted");
+    },
     props: ["cardId"],
     data() {
       return {
@@ -27,26 +30,13 @@
     },
 
     methods: {
-      select() {
-        if (this.isSelected === true) {
-          this.isSelected = false;
-          this.computeSelect;
-        } else {
-          console.log(this.cardId, " selected");
-          this.isSelected = true;
-          this.computeSelect;
-        }
+      cardClicked() {
+        this.$emit("cardClicked", this.cardId);
+        this.isSelected = !this.isSelected;
+        console.log("clicked ", this.cardId);
       },
     },
-    computed: {
-      computeSelect() {
-        if (this.isSelected === true) {
-          return this.$store.commit("setSelectedCard", "empty");
-        } else {
-          return this.$store.commit("setSelectedCard", this.id);
-        }
-      },
-    },
+    computed: {},
     components: {
       King,
     },

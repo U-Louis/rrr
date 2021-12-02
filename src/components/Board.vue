@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-on:cardClicked="selectCard" v-on:emitCardId="fillDecks">
     <h1>Main grid</h1>
     <div class="grid justify-items-center">
       <div class="grid grid-cols-3 w-max">
@@ -13,7 +13,7 @@
       <h1>p1 Hand</h1>
       <div class="grid grid-cols-7">
         <div v-for="(item, index) in p1Hand" :key="item.id">
-          <card v-bind:cardId="'p1Hand' + index"></card>
+          <card v-bind:cardId="'p1Hand' + index" id="index"></card>
         </div>
       </div>
     </div>
@@ -23,18 +23,38 @@
 <script>
   import Card from "./Card.vue";
 
-  let grid = new Array(9).fill(1);
-  let p1Hand = new Array(7).fill(1);
-
   export default {
     data() {
       return {
-        grid: grid,
-        p1Hand: p1Hand,
+        selectedCard: null,
+        grid: new Array(9).fill(1),
+        p1Hand: new Array(7).fill(1),
+        fillDecksCounter: 0,
       };
     },
 
-    methods: {},
+    methods: {
+      selectCard(clickedCard) {
+        if (clickedCard === this.selectedCard) {
+          this.selectedCard = null;
+        } else {
+          if (this.selectedCard != null) {
+            console.log("he");
+          }
+        }
+      },
+
+      fillDecks(cardIdReceived) {
+        console.log("received");
+        if (this.fillDecksCounter < 9) {
+          this.grid.push(cardIdReceived);
+        } else if (this.fillDecksCounter < 15) {
+          this.p1Hand.push(cardIdReceived);
+        }
+        this.fillDecksCounter++;
+        console.log(this.grid, this.p1Hand);
+      },
+    },
 
     components: {
       Card,

@@ -9,9 +9,9 @@
 
 <script>
   export default {
-    computed: {
+    methods: {
       askNewGame() {
-        return this.$store.commit("throwNewGame");
+        console.log("new game");
       },
     },
   };
