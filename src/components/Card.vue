@@ -24,12 +24,14 @@
       this.$emit("emitCardId", this._uid);
       //console.log(this._uid, " emitted");
     },
+
     props: {
       name: String,
       definition: String,
       team: String,
       state: String,
     },
+
     data() {
       return {
         isSelected: false,
@@ -43,9 +45,9 @@
     methods: {
       cardClicked() {
         this.$emit("cardClicked", this);
-        this.isSelected = !this.isSelected;
       },
     },
+
     computed: {},
     components: {
       King,

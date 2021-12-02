@@ -6,7 +6,6 @@
         <div v-for="item in grid" :key="item.id">
           <card
             v-on:emitCardId="fillDecks"
-            v-on:cardClicked="selectCard"
             name="empty"
             definition="empty"
             state="none"
@@ -49,15 +48,18 @@
 
     methods: {
       selectCard(clickedCard) {
-        //TODO
-        console.log("clicked : ", clickedCard);
-        if (clickedCard === this.selectedCard) {
-          this.selectedCard = null;
-        } else {
-          if (this.selectedCard != null) {
-            console.log("he");
-          }
+        //deselect current card
+        if (this.selectedCard != null) {
+          this.selectedCard._data.isSelected = false;
         }
+
+        //raise clicked card OR unraise if clicked and selected are the same
+        if (this.selectedCard != clickedCard) {
+          clickedCard._data.isSelected = !clickedCard._data.isSelected;
+        }
+
+        //set the new selected card
+        this.selectedCard = clickedCard;
       },
 
       fillDecks(cardIdReceived) {
