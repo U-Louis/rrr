@@ -4,7 +4,7 @@
     class="w-26 h-26 bg-blue-200 rounded-lg shadow-lg m-2 dark:bg-gray-800"
     :class="[isSelected ? selectionTransform : '']"
   >
-    <king :cardId="cardId"></king>
+    <king :cardId="this._uid"></king>
   </div>
 </template>
 
@@ -15,7 +15,6 @@
       this.$emit("emitCardId", this._uid);
       console.log(this._uid, " emitted");
     },
-    props: ["cardId"],
     data() {
       return {
         name: "empty",
@@ -31,9 +30,9 @@
 
     methods: {
       cardClicked() {
-        this.$emit("cardClicked", this.cardId);
+        this.$emit("cardClicked", this._uid);
         this.isSelected = !this.isSelected;
-        console.log("clicked ", this.cardId);
+        console.log("clicked ", this._uid);
       },
     },
     computed: {},

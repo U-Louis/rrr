@@ -1,10 +1,10 @@
 <template>
-  <div v-on:cardClicked="selectCard" v-on:emitCardId="fillDecks">
+  <div v-on:cardClicked="selectCard">
     <h1>Main grid</h1>
     <div class="grid justify-items-center">
       <div class="grid grid-cols-3 w-max">
-        <div v-for="(item, index) in grid" :key="item.id">
-          <card v-bind:cardId="'grid' + index"></card>
+        <div v-for="item in grid" :key="item.id">
+          <card v-on:emitCardId="fillDecks"></card>
         </div>
       </div>
 
@@ -12,8 +12,8 @@
 
       <h1>p1 Hand</h1>
       <div class="grid grid-cols-7">
-        <div v-for="(item, index) in p1Hand" :key="item.id">
-          <card v-bind:cardId="'p1Hand' + index" id="index"></card>
+        <div v-for="item in p1Hand" :key="item.id">
+          <card v-on:emitCardId="fillDecks"></card>
         </div>
       </div>
     </div>
@@ -45,11 +45,11 @@
       },
 
       fillDecks(cardIdReceived) {
-        console.log("received");
-        if (this.fillDecksCounter < 9) {
-          this.grid.push(cardIdReceived);
-        } else if (this.fillDecksCounter < 15) {
-          this.p1Hand.push(cardIdReceived);
+        let i = this.fillDecksCounter;
+        if (i < 9) {
+          this.grid[i] = cardIdReceived;
+        } else if (i < 16) {
+          this.p1Hand[i - 9] = cardIdReceived;
         }
         this.fillDecksCounter++;
         console.log(this.grid, this.p1Hand);
