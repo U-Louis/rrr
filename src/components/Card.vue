@@ -42,16 +42,8 @@
 
     methods: {
       cardClicked() {
-        let card = {
-          id: this._uid,
-          name: this.name,
-          definition: this.definition,
-          team: this.team,
-          state: this.state,
-        };
-        this.$emit("cardClicked", card);
+        this.$emit("cardClicked", this);
         this.isSelected = !this.isSelected;
-        //console.log("clicked ", this._uid);
       },
     },
     computed: {},
