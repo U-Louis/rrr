@@ -1,10 +1,17 @@
 <template>
-  <div v-on:cardClicked="selectCard">
+  <div>
     <h1>Main grid</h1>
     <div class="grid justify-items-center">
       <div class="grid grid-cols-3 w-max">
         <div v-for="item in grid" :key="item.id">
-          <card v-on:emitCardId="fillDecks"></card>
+          <card
+            v-on:emitCardId="fillDecks"
+            v-on:cardClicked="selectCard"
+            name="empty"
+            definition="empty"
+            state="none"
+            team="neutral"
+          ></card>
         </div>
       </div>
 
@@ -13,7 +20,14 @@
       <h1>p1 Hand</h1>
       <div class="grid grid-cols-7">
         <div v-for="item in p1Hand" :key="item.id">
-          <card v-on:emitCardId="fillDecks"></card>
+          <card
+            v-on:emitCardId="fillDecks"
+            v-on:cardClicked="selectCard"
+            name="empty"
+            definition="king"
+            state="none"
+            team="red"
+          ></card>
         </div>
       </div>
     </div>
@@ -35,6 +49,8 @@
 
     methods: {
       selectCard(clickedCard) {
+        //TODO
+        console.log("clicked : ", clickedCard);
         if (clickedCard === this.selectedCard) {
           this.selectedCard = null;
         } else {
@@ -52,7 +68,7 @@
           this.p1Hand[i - 9] = cardIdReceived; //for p2, use -16 and so on
         }
         this.fillDecksCounter++;
-        console.log(this.grid, this.p1Hand);
+        //console.log(this.grid, this.p1Hand);
       },
     },
 
