@@ -30,6 +30,8 @@
       definition: String,
       team: String,
       state: String,
+      locationName: String,
+      locationNumber: Number,
     },
 
     data() {
@@ -37,11 +39,10 @@
         isSelected: false,
         selectionTransform: `
         animate-pulse
-          `,
-        hoverTransform: `
-        transform
+                transform
           -translate-y-2
-          translate-x-1`,
+          scale-110
+          `,
       };
     },
 
