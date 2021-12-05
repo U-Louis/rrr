@@ -1,5 +1,7 @@
 <template>
   <div
+    v-if="isDestroyed"
+    v-show="isDestroyed"
     v-on:click="cardClicked"
     class="w-26 h-26 rounded-lg shadow-lg m-2 dark:bg-gray-800"
     :class="[
@@ -26,6 +28,7 @@
     },
 
     props: {
+      isDestroyed: Boolean,
       name: String,
       definition: String,
       team: String,
@@ -43,6 +46,7 @@
           -translate-y-2
           scale-110
           `,
+        //FROM PROPS  : TODO:repass props as data
       };
     },
 

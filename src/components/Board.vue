@@ -6,6 +6,7 @@
         <div v-for="item in grid" :key="item.id">
           <card
             v-on:cardClicked="dispatchClick"
+            isDestroyed=false/
             name="empty"
             definition="empty"
             state="none"
@@ -22,6 +23,7 @@
         <div v-for="item in p1Hand" :key="item.id">
           <card
             v-on:cardClicked="dispatchClick"
+            isDestroyed=false/
             name="empty"
             definition="king"
             state="none"
@@ -49,20 +51,35 @@
 
     methods: {
       dispatchClick(clickedCard) {
-        console.log(clickedCard);
+        //console.log(clickedCard);
         switch (clickedCard._props.locationName) {
           case "p1Hand":
             this.selectCard(clickedCard);
             break;
           case "grid":
             console.log("grid clicked"); //do replacement
+
+            //check if the move is legit (spot empty or special)
+
+            //replace card on the grid
+            if (this.selectedCard != null) {
+              console.log("clicked :", clickedCard);
+              console.log("selected : ", this.selectedCard);
+
+              clickedCard._props.team = this.selectedCard._props.team;
+              clickedCard._props.definition =
+                this.selectedCard._props.definition;
+            }
+            //remove card from hand
+            wtf
+this.selectedCard._props.isDestroyed = true;
+
+            //empty selection
             break;
           default:
             console.log("prop missiong");
         }
       },
-
-      // cardPlayed(clickedCard){      },
 
       selectCard(clickedCard) {
         //unshow currently selected card
